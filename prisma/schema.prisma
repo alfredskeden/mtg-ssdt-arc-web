@@ -15,6 +15,7 @@ model User {
   name String
   email String @unique
   phone String
+  paid Boolean @default(false)
   createdAt DateTime @default(now())
   updateAt DateTime @default(now())
 }

@@ -2,9 +2,31 @@
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const signUp = (req: NextApiRequest, res: NextApiResponse) => {
-  res.statusCode = 200;
-  res.json({ name: "John Doe" });
+import prisma from "lib/clients/prisma";
+
+type FormValues = {
+  name: string;
+  email: string;
+  phone: string;
+};
+
+const signUp = async (req: NextApiRequest, res: NextApiResponse) => {
+  const data = req.body as FormValues;
+
+  const { name, email, phone } = data;
+  try {
+    const prismaRes = await prisma.user.create({
+      data: {
+        name,
+        email,
+        phone,
+      },
+    });
+    res.statusCode = 200;
+    res.send(prismaRes);
+  } catch (e) {
+    res.send(e);
+  }
 };
 
 export default signUp;
