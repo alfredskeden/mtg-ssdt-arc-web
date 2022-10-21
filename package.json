@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev -p 5555",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 5555",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format"
   },
