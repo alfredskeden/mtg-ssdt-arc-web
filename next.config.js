@@ -16,7 +16,4 @@ module.exports = withPWA({
   eslint: {
     dirs: ["src"],
   },
-  images: {
-    domains: ["tournament.singlesmtg.com"],
-  },
 });

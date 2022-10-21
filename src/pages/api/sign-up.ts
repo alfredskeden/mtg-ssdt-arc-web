@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import prisma from "lib/clients/prisma";
 
-type FormValues = {
+export type FormValues = {
   name: string;
   email: string;
   phone: string;
