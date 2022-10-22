@@ -16,15 +16,17 @@ const signUp = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { name, email, phone } = data;
   try {
-    const prismaRes = await prisma.user.create({
-      data: {
-        name,
-        email,
-        phone,
-      },
-    });
-    res.statusCode = 200;
-    res.send(prismaRes);
+    if (req.method === "POST") {
+      const prismaRes = await prisma.user.create({
+        data: {
+          name,
+          email,
+          phone,
+        },
+      });
+      res.statusCode = 200;
+      res.send(prismaRes);
+    }
   } catch (e) {
     res.send(e);
   }
