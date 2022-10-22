@@ -1,4 +1,4 @@
-const APP_NAME = "nextarter-chakra";
+const APP_NAME = "Tournament Seald Draft Tournament ARC UMAIN";
 
 const Meta = () => {
   return (
