@@ -1,17 +1,19 @@
 import {
   Box,
   Button,
+  Checkbox,
   Flex,
   FormControl,
-  FormErrorMessage,
   FormLabel,
   Heading,
   Input,
   Text,
   useToast,
+  Image,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { NextSeo } from "next-seo";
+import { useState } from "react";
 import type { FieldError, UseFormRegister } from "react-hook-form";
 import { useForm } from "react-hook-form";
 
@@ -19,7 +21,7 @@ import type { FormValues } from "pages/api/sign-up";
 
 const requiredText = "This is required";
 
-type FormValuesStrings = "name" | "email" | "phone";
+type FormValuesStrings = "name" | "email";
 
 type InputMTGProps = {
   label: FormValuesStrings;
@@ -49,7 +51,7 @@ const InputMTG = ({
           required: requiredText,
         })}
       />
-      <FormErrorMessage>{error && errorMessage}</FormErrorMessage>
+      <Text color="red.400">{error && errorMessage}</Text>
     </FormControl>
   );
 };
@@ -59,9 +61,11 @@ const Home = () => {
     handleSubmit,
     register,
     reset,
-    formState: { errors, isSubmitting },
-  } = useForm<FormValues>();
+    watch,
+    formState: { errors, isSubmitting, isValid },
+  } = useForm<FormValues>({ mode: "onBlur" });
   const toast = useToast();
+  const [QRCode, setQRCode] = useState<string>();
 
   const onSubmit = handleSubmit(async (data) => {
     const response = await axios.post("/api/sign-up", data);
@@ -79,6 +83,7 @@ const Home = () => {
 
     if (response.status === 200) {
       reset();
+      setQRCode(undefined);
       toast({
         title: "Signed up! Nice!",
         status: "success",
@@ -96,41 +101,117 @@ const Home = () => {
     });
   });
 
+  const generateQRcode = async () => {
+    const response = await axios.post(
+      "https://api.swish.nu/qr/v2/prefilled",
+      {
+        payee: process.env.NEXT_PUBLIC_PAYMENT_NUMBER,
+        amount: {
+          value: Number(process.env.NEXT_PUBLIC_PAYMENT_PRICE),
+        },
+        message: {
+          value: watch("name"),
+        },
+        size: 150,
+      },
+      {
+        responseType: "blob",
+      }
+    );
+
+    setQRCode(URL.createObjectURL(response.data));
+  };
+
   return (
     <Flex direction="column" minHeight="70vh" gap={4} mb={8} w="full">
       <NextSeo title="Home" />
 
       <form onSubmit={onSubmit}>
-        <Box display="flex" flexDirection="column" gap={7} w={["100%", "50%"]}>
-          <InputMTG
-            label="name"
-            register={register}
-            error={errors.name}
-            errorMessage={errors.name?.message}
-          />
-          <InputMTG
-            label="email"
-            register={register}
-            error={errors.email}
-            errorMessage={errors.email?.message}
-          />
-          <InputMTG
-            label="phone"
-            register={register}
-            error={errors.phone}
-            errorMessage={errors.phone?.message}
-          />
+        <Box display="flex" flexDirection="column" gap={4}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap={7}
+            w={["100%", "50%"]}
+          >
+            <InputMTG
+              label="name"
+              register={register}
+              error={errors.name}
+              errorMessage={errors.name?.message}
+            />
+            <InputMTG
+              label="email"
+              register={register}
+              error={errors.email}
+              errorMessage={errors.email?.message}
+            />
+            <FormControl isRequired>
+              <FormLabel htmlFor="phone">Phone</FormLabel>
+              <Input
+                size="lg"
+                id="phone"
+                type="phone"
+                borderColor="white"
+                placeholder="phone"
+                {...register("phone", {
+                  required: requiredText,
+                  pattern: {
+                    value: /^(([+]46)\s*(7)|07)[02369]\s*(\d{4})\s*(\d{3})$/,
+                    message: "Please provide a valid Swedish number.",
+                  },
+                })}
+              />
+              <Text color="red.400">
+                {errors.phone && errors.phone.message}
+              </Text>
+            </FormControl>
+          </Box>
+          <Button
+            mt={4}
+            colorScheme="teal"
+            size="lg"
+            disabled={!isValid}
+            onClick={generateQRcode}
+            alignSelf="flex-start"
+          >
+            Generate Payment QR Code
+          </Button>
+          {QRCode && isValid && (
+            <>
+              <Text>Payment information:</Text>
+              <Text>To: {process.env.NEXT_PUBLIC_PAYMENT_NAME}</Text>
+              <Text>Number: {process.env.NEXT_PUBLIC_PAYMENT_NUMBER}</Text>
+              <Text>
+                Amount: {process.env.NEXT_PUBLIC_PAYMENT_PRICE} kr (13 % discont
+                for 6 packs)
+              </Text>
+              <Text>Message: {watch("name")}</Text>
+              <Text>Or Scan QR Code</Text>
+              <Image
+                src={QRCode}
+                alt="qr code for paying the fee"
+                boxSize="200px"
+              />
+            </>
+          )}
+          <Checkbox {...register("accept")} alignSelf="flex-start">
+            I have paied and accept the rules of the tournament provided below.
+          </Checkbox>
+          <Button
+            mt={4}
+            colorScheme="teal"
+            type="submit"
+            disabled={!watch("accept") || !isValid}
+            isLoading={isSubmitting}
+            size="lg"
+            alignSelf="flex-start"
+          >
+            SIGN UP!
+          </Button>
         </Box>
-        <Button
-          mt={4}
-          colorScheme="teal"
-          type="submit"
-          isLoading={isSubmitting}
-          size="lg"
-        >
-          SIGN UP!
-        </Button>
       </form>
+
       <Box mt="8">
         <Heading as="h2" size="lg">
           <u>Information</u>

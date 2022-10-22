@@ -8,6 +8,7 @@ export type FormValues = {
   name: string;
   email: string;
   phone: string;
+  accept: boolean;
 };
 
 const signUp = async (req: NextApiRequest, res: NextApiResponse) => {
