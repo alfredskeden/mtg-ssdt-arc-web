@@ -14,47 +14,11 @@ import {
 import axios from "axios";
 import { NextSeo } from "next-seo";
 import { useState } from "react";
-import type { FieldError, UseFormRegister } from "react-hook-form";
 import { useForm } from "react-hook-form";
 
+import InputMTG from "lib/components/InputMTG";
+import { requiredText } from "lib/utils";
 import type { FormValues } from "pages/api/sign-up";
-
-const requiredText = "This is required";
-
-type FormValuesStrings = "name" | "email";
-
-type InputMTGProps = {
-  label: FormValuesStrings;
-  register: UseFormRegister<FormValues>;
-  error: FieldError | undefined;
-  errorMessage: string | undefined;
-  isRequired?: boolean;
-};
-
-const InputMTG = ({
-  label,
-  register,
-  error,
-  errorMessage,
-  isRequired = true,
-}: InputMTGProps) => {
-  return (
-    <FormControl isRequired={isRequired}>
-      <FormLabel htmlFor={label}>{label}</FormLabel>
-      <Input
-        size="lg"
-        id={label}
-        type={label}
-        borderColor="white"
-        placeholder={label}
-        {...register(label, {
-          required: requiredText,
-        })}
-      />
-      <Text color="red.400">{error && errorMessage}</Text>
-    </FormControl>
-  );
-};
 
 const Home = () => {
   const {
@@ -77,6 +41,7 @@ const Home = () => {
         status: "warning",
         duration: 6000,
         isClosable: true,
+        position: "top",
       });
       return;
     }
@@ -87,8 +52,9 @@ const Home = () => {
       toast({
         title: "Signed up! Nice!",
         status: "success",
-        duration: 3000,
+        duration: 6000,
         isClosable: true,
+        position: "top",
       });
       return;
     }
@@ -98,6 +64,7 @@ const Home = () => {
       status: "error",
       duration: 9000,
       isClosable: true,
+      position: "top",
     });
   });
 
@@ -112,7 +79,7 @@ const Home = () => {
         message: {
           value: watch("name"),
         },
-        size: 150,
+        size: 200,
       },
       {
         responseType: "blob",
@@ -123,16 +90,16 @@ const Home = () => {
   };
 
   return (
-    <Flex direction="column" minHeight="70vh" gap={4} mb={8} w="full">
-      <NextSeo title="Home" />
+    <Flex direction="column" minHeight="70vh" gap={6} w="full">
+      <NextSeo title="ARC - UMAIN - Super Sealed Draft Tournament" />
 
       <form onSubmit={onSubmit}>
-        <Box display="flex" flexDirection="column" gap={4}>
+        <Box display="flex" flexDirection="column" gap={6}>
           <Box
             display="flex"
             flexDirection="column"
-            gap={7}
-            w={["100%", "50%"]}
+            gap={6}
+            w={["100%", "100%", "50%"]}
           >
             <InputMTG
               label="name"
@@ -178,31 +145,39 @@ const Home = () => {
             Generate Payment QR Code
           </Button>
           {QRCode && isValid && (
-            <>
-              <Text>Payment information:</Text>
-              <Text>To: {process.env.NEXT_PUBLIC_PAYMENT_NAME}</Text>
-              <Text>Number: {process.env.NEXT_PUBLIC_PAYMENT_NUMBER}</Text>
-              <Text>
-                Amount: {process.env.NEXT_PUBLIC_PAYMENT_PRICE} kr (13 % discont
-                for 6 packs)
-              </Text>
-              <Text>Message: {watch("name")}</Text>
-              <Text>Or Scan QR Code</Text>
-              <Image
-                src={QRCode}
-                alt="qr code for paying the fee"
-                boxSize="200px"
-              />
-            </>
+            <Box
+              display="flex"
+              flexDirection={["column", "column", "row"]}
+              gap={6}
+            >
+              <Box alignSelf="center">
+                <Text>Payment information:</Text>
+                <Text>To: {process.env.NEXT_PUBLIC_PAYMENT_NUMBER}</Text>
+                <Text>Name: {process.env.NEXT_PUBLIC_PAYMENT_NAME}</Text>
+                <Text>
+                  Entry fee: {process.env.NEXT_PUBLIC_PAYMENT_PRICE} kr
+                </Text>
+                <Text>Message: {watch("name")}</Text>
+                <Text>Or Scan QR Code</Text>
+              </Box>
+              <Box>
+                <Image
+                  src={QRCode}
+                  alt="qr code for paying the entry fee"
+                  boxSize="200px"
+                />
+              </Box>
+            </Box>
           )}
           <Checkbox {...register("accept")} alignSelf="flex-start">
-            I have paied and accept the rules of the tournament provided below.
+            I have paid and I accept the rules for the tournament provided
+            below.
           </Checkbox>
           <Button
             mt={4}
             colorScheme="teal"
             type="submit"
-            disabled={!watch("accept") || !isValid}
+            disabled={!watch("accept") || !isValid || !QRCode}
             isLoading={isSubmitting}
             size="lg"
             alignSelf="flex-start"

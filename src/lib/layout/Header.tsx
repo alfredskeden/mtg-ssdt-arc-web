@@ -9,7 +9,7 @@ const Header = () => {
       <Link href="/" passHref>
         <LinkChakra>
           <Heading size="md" sx={hoverStyle}>
-            Magic the Gathering - Super Sealed Tournament <br />
+            Magic the Gathering - Super Sealed Draft Tournament <br />
             ARC - UMAIN
           </Heading>
         </LinkChakra>
