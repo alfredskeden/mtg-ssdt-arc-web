@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import type { User } from "@prisma/client";
 
 import prisma from "lib/clients/prisma";
@@ -9,15 +9,15 @@ type Props = {
 
 const Info = ({ data }: Props) => {
   return (
-    <Box>
+    <Flex direction="column" minHeight="70vh" gap={2} w="full">
       {data.map((user) => {
         return (
-          <Text>
+          <Text key={user.id}>
             {user.id} - {user.paid.toString()}
           </Text>
         );
       })}
-    </Box>
+    </Flex>
   );
 };
 

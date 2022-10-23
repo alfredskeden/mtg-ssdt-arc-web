@@ -3,10 +3,6 @@ import {
   Button,
   Checkbox,
   Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
   Text,
   useToast,
   Image,
@@ -17,8 +13,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import InputMTG from "lib/components/InputMTG";
-import { requiredText } from "lib/utils";
 import type { FormValues } from "pages/api/sign-up";
+
+import Information from "./components/Information";
 
 const Home = () => {
   const {
@@ -91,10 +88,10 @@ const Home = () => {
 
   return (
     <Flex direction="column" minHeight="70vh" gap={6} w="full">
-      <NextSeo title="ARC - UMAIN - Super Sealed Draft Tournament" />
+      <NextSeo title="ARC - UMAIN - Super Sealed Draft Tournament 19/11" />
 
       <form onSubmit={onSubmit}>
-        <Box display="flex" flexDirection="column" gap={6}>
+        <Flex flexDirection="column" gap={6}>
           <Box
             display="flex"
             flexDirection="column"
@@ -112,27 +109,22 @@ const Home = () => {
               register={register}
               error={errors.email}
               errorMessage={errors.email?.message}
+              pattern={{
+                // eslint-disable-next-line no-useless-escape
+                value: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-z]+)$/,
+                message: "Please enter a valid email.",
+              }}
             />
-            <FormControl isRequired>
-              <FormLabel htmlFor="phone">Phone</FormLabel>
-              <Input
-                size="lg"
-                id="phone"
-                type="phone"
-                borderColor="white"
-                placeholder="phone"
-                {...register("phone", {
-                  required: requiredText,
-                  pattern: {
-                    value: /^(([+]46)\s*(7)|07)[02369]\s*(\d{4})\s*(\d{3})$/,
-                    message: "Please provide a valid Swedish number.",
-                  },
-                })}
-              />
-              <Text color="red.400">
-                {errors.phone && errors.phone.message}
-              </Text>
-            </FormControl>
+            <InputMTG
+              label="phone"
+              register={register}
+              error={errors.phone}
+              errorMessage={errors.phone?.message}
+              pattern={{
+                value: /^(([+]46)\s*(7)|07)[02369]\s*(\d{4})\s*(\d{3})$/,
+                message: "Please provide a valid Swedish number.",
+              }}
+            />
           </Box>
           <Button
             mt={4}
@@ -184,15 +176,10 @@ const Home = () => {
           >
             SIGN UP!
           </Button>
-        </Box>
+        </Flex>
       </form>
 
-      <Box mt="8">
-        <Heading as="h2" size="lg">
-          <u>Information</u>
-        </Heading>
-        <Text>Information goes here!</Text>
-      </Box>
+      <Information />
     </Flex>
   );
 };

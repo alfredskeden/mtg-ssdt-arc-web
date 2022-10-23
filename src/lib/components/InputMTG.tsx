@@ -1,5 +1,9 @@
 import { FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
-import type { FieldError, UseFormRegister } from "react-hook-form";
+import type {
+  FieldError,
+  UseFormRegister,
+  ValidationRule,
+} from "react-hook-form";
 
 import type { FormValuesStrings } from "lib/utils";
 import { capitalizeFirstLetter, requiredText } from "lib/utils";
@@ -11,6 +15,7 @@ type InputMTGProps = {
   error: FieldError | undefined;
   errorMessage: string | undefined;
   isRequired?: boolean;
+  pattern?: ValidationRule<RegExp>;
 };
 
 const InputMTG = ({
@@ -19,6 +24,7 @@ const InputMTG = ({
   error,
   errorMessage,
   isRequired = true,
+  pattern,
 }: InputMTGProps) => {
   return (
     <FormControl isRequired={isRequired}>
@@ -30,7 +36,8 @@ const InputMTG = ({
         borderColor="white"
         placeholder={label}
         {...register(label, {
-          required: requiredText,
+          required: isRequired ? requiredText : undefined,
+          pattern,
         })}
       />
       <Text color="red.400">{error && errorMessage}</Text>
