@@ -34,7 +34,7 @@ const Information = () => {
       <InfoSections header="Information">
         Here goes information about the event
       </InfoSections>
-      <InfoSections header="Prices">
+      <InfoSections header="Tournament winning prices">
         <OrderedList>
           <ListItem>Giftcard* 1400 kr</ListItem>
           <ListItem>Giftcard* 500 kr</ListItem>
@@ -43,7 +43,7 @@ const Information = () => {
         <Text fontSize="xs" mt="4">
           * Giftcards at{" "}
           <Link href="https://alphaspel.se/" passHref>
-            <LinkChakra>alphaspel.se</LinkChakra>
+            <LinkChakra isExternal>alphaspel.se</LinkChakra>
           </Link>
         </Text>
       </InfoSections>
