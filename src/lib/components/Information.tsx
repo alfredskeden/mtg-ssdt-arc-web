@@ -202,17 +202,13 @@ const Information = () => {
               <Flex gap={1}>
                 <Text>Robin Ellingsen -</Text>
                 <Link href="tel:+46702000892" passHref>
-                  <LinkChakra display="flex" alignItems="center">
-                    070 200 08 92
-                  </LinkChakra>
+                  <LinkChakra display="flex">070 200 08 92</LinkChakra>
                 </Link>
               </Flex>
               <Flex gap={1}>
                 <Text>Alfred Skedebäck - </Text>
-                <Link href="tel:+46738104761">
-                  <LinkChakra display="flex" alignItems="center">
-                    073 81 04 761
-                  </LinkChakra>
+                <Link href="tel:+46738104761" passHref>
+                  <LinkChakra display="flex">073 81 04 761</LinkChakra>
                 </Link>
               </Flex>
             </Flex>

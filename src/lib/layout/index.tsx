@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react";
+import { SkipNavContent } from "@chakra-ui/skip-nav";
 import type { ReactNode } from "react";
 
 import Footer from "./Footer";
@@ -13,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
     <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
       <Box margin="8">
         <Header />
-        <Box as="main">{children}</Box>
+        <SkipNavContent as="main">{children}</SkipNavContent>
         <Footer />
       </Box>
     </Box>
