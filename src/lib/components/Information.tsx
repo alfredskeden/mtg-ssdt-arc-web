@@ -71,7 +71,7 @@ const Information = () => {
               <b>13:00</b> Deck building
             </Text>
             <Text>
-              <b>15:50</b> Tournament Start.
+              <b>14:00</b> Tournament Start.
             </Text>
           </Flex>
           <Flex>
@@ -92,7 +92,7 @@ const Information = () => {
           </Flex>
           <Flex>
             <Text>
-              <b>16:30</b> Food. (Pizzas and beer, will vegan alternatives)
+              <b>17:30</b> Food. (Pizzas and beer, will vegan alternatives)
             </Text>
           </Flex>
           <Flex direction="column">
@@ -111,7 +111,7 @@ const Information = () => {
               <u>Formats</u>
             </Heading>
             <Text>
-              The formats for the Umain Sealed Draft Magic Championship is
+              The formats for the UMAIN Sealed Draft Magic Championship is
               Brother’s War Sealed Booster.
             </Text>
           </Flex>
@@ -121,9 +121,9 @@ const Information = () => {
             </Heading>
             <Text>
               Players must have a deck ready no later than exactly when
-              game-time starts (TBA). Failure to do so will mean either play
+              game-time starts (14:00). Failure to do so will mean either play
               with what you have at the time, or concede. No changes except for
-              sideboarding are allowed to a player’s deck past the deadline.
+              side-boarding are allowed to a player’s deck past the deadline.
             </Text>
           </Flex>
           <Flex direction="column" mt={2}>
