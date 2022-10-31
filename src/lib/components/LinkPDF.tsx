@@ -3,7 +3,12 @@ import Link from "next/link";
 import { AiOutlineFilePdf } from "react-icons/ai";
 import { GoLinkExternal } from "react-icons/go";
 
-const LinkPDF = ({ href, label }: { href: string; label: string }) => {
+type Props = {
+  href: string;
+  label: string;
+};
+
+const LinkPDF = ({ href, label }: Props) => {
   return (
     <Text display="flex" gap={2} mt="2">
       <Link href={href} passHref>

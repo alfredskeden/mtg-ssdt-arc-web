@@ -5,7 +5,9 @@ import {
   Text,
   UnorderedList,
   ListItem,
+  Link as LinkChakra,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { AiOutlineArrowDown } from "react-icons/ai";
 
 import LinkPDF from "./LinkPDF";
@@ -188,6 +190,44 @@ const Information = () => {
               discretion, to suspend, modify, and change this document or the
               program it supports at any time and for any reason without notice.
             </Text>
+          </Flex>
+          <Flex direction="column" gap={4} mb={4}>
+            <Heading as="h3" size="md">
+              <u>Organizers</u>
+            </Heading>
+            <Flex direction="column">
+              <Heading as="h4" size="sm">
+                General event info
+              </Heading>
+              <Flex gap={1}>
+                <Text>Robin Ellingsen -</Text>
+                <Link href="tel:+46702000892" passHref>
+                  <LinkChakra display="flex" alignItems="center">
+                    070 200 08 92
+                  </LinkChakra>
+                </Link>
+              </Flex>
+              <Flex gap={1}>
+                <Text>Alfred Skedebäck - </Text>
+                <Link href="tel:+46738104761">
+                  <LinkChakra display="flex" alignItems="center">
+                    073 81 04 761
+                  </LinkChakra>
+                </Link>
+              </Flex>
+            </Flex>
+            <Flex direction="column">
+              <Heading as="h4" size="sm">
+                Tournament specific info
+              </Heading>
+              <Text>Dante Cosentino</Text>
+            </Flex>
+            <Flex direction="column">
+              <Heading as="h4" size="sm">
+                GDPR info
+              </Heading>
+              <Text>Nellie Stenman</Text>
+            </Flex>
           </Flex>
         </Flex>
       </InfoSections>
