@@ -1,4 +1,4 @@
-const APP_NAME = "Tournament Sealed Draft Tournament ARC UMAIN";
+const APP_NAME = "Tournament Sealed Tournament ARC UMAIN";
 
 const Meta = () => {
   return (

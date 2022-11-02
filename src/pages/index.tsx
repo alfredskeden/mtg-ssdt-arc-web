@@ -93,7 +93,7 @@ const Home = ({ full }: Props) => {
 
   return (
     <Flex direction="column" minHeight="70vh" gap={6} w="full">
-      <NextSeo title="ARC - UMAIN - Super Sealed Draft Tournament 19/11" />
+      <NextSeo title="ARC - UMAIN - Super Sealed Tournament 19/11" />
 
       {full ? (
         <FullInfo />

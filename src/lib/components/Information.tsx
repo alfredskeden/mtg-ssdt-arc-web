@@ -53,6 +53,15 @@ const Information = () => {
               organisers.
             </Text>
           </Flex>
+          <Flex direction="column" mt={2}>
+            <Heading as="h3" size="md">
+              <u>Entry fee</u>
+            </Heading>
+            <Text>300 sek</Text>
+            <Text>
+              <i>* You will get 6 draft boosters. Food and drinks.</i>
+            </Text>
+          </Flex>
           <Flex direction="column">
             <Heading as="h3" size="md">
               <u>Time</u>
@@ -64,7 +73,7 @@ const Information = () => {
               <i>All times except Doors are approximately.</i>
             </Text>
             <Text>
-              <b>11:30</b> Doors
+              <b>11:30</b> Doors open!
             </Text>
             <Text>
               <b>12:00</b> Booster handout - Presentation / Rules.
@@ -113,8 +122,8 @@ const Information = () => {
               <u>Formats</u>
             </Heading>
             <Text>
-              The formats for the UMAIN Sealed Draft Magic Championship is
-              Brother’s War Sealed Booster.
+              The formats for the UMAIN Super Sealed Magic Championship is
+              Brother’s War Sealed Draft Boosters.
             </Text>
           </Flex>
           <Flex direction="column" mt={2}>
@@ -228,7 +237,7 @@ const Information = () => {
         </Flex>
       </InfoSections>
       <InfoSections header="Important Links">
-        <LinkPDF href="/DraftTournament_Info.pdf" label="Information" />
+        <LinkPDF href="/SealedTournament_Info.pdf" label="Information" />
         <LinkPDF href="/Rules.pdf" label="Rules" />
         <LinkPDF href="/BuildADeck.pdf" label="Build a Deck" />
       </InfoSections>
