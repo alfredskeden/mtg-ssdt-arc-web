@@ -1,7 +1,7 @@
 import { Box, Flex, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { NextSeo } from "next-seo";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import prisma from "lib/clients/prisma";

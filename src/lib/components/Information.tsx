@@ -20,8 +20,8 @@ const Information = () => {
         </Heading>
         <Text>
           Umain is hosting a sealed event with the new Magic the Gathering set:
-          Brother's War! We welcome enthousiasts to join, play with us and get
-          to know each other.
+          Brother&apos;s War! We welcome enthousiasts to join, play with us and
+          get to know each other.
         </Text>
       </Box>
       <Box mb={8}>
