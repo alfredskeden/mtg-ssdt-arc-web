@@ -11,8 +11,8 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
-      <Box margin="8">
+    <Box margin="0 auto" maxWidth={1280} transition="0.5s ease-out">
+      <Box ml="8" mr="8">
         <Header />
         <SkipNavContent as="main">{children}</SkipNavContent>
         <Footer />
