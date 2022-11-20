@@ -5,19 +5,19 @@ import {
   Box,
   Heading,
   Text,
-  Button,
+  // Button,
   Image,
-  UnorderedList,
-  ListItem,
+  // UnorderedList,
+  // ListItem,
 } from "@chakra-ui/react";
 
 export default function CallToActionWithMedia() {
-  const scrollToForm = () => {
-    const form = document.querySelector("#form");
-    if (form) {
-      form.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  // const scrollToForm = () => {
+  //   const form = document.querySelector("#form");
+  //   if (form) {
+  //     form.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   }
+  // };
 
   return (
     <Container maxW="6xl">
@@ -41,7 +41,11 @@ export default function CallToActionWithMedia() {
               Super Sealed Tournament
             </Text>
           </Heading>
-          <UnorderedList listStyleType="none">
+          <Stack>
+            <Text as="span">Thank you for joining the event.</Text>
+            <Text as="span">We hope to see you again next time!</Text>
+          </Stack>
+          {/* <UnorderedList listStyleType="none">
             <ListItem>
               <Text color="gray.500" as="span">
                 What -
@@ -66,34 +70,7 @@ export default function CallToActionWithMedia() {
               </Text>{" "}
               300kr
             </ListItem>
-          </UnorderedList>
-          {/* <Text as="span" mt={4}>
-            <Text color="gray.500" as="span">
-              What -
-            </Text>{" "}
-            Magic the Gathering sealed tournament
-          </Text> */}
-
-          {/* <Text as="span">
-            <Text color="gray.500" as="span">
-              Where -
-            </Text>{" "}
-            Mäster Samuelsgatan 56, Stockholm
-          </Text> */}
-
-          {/* <Text as="span">
-            <Text color="gray.500" as="span">
-              When -
-            </Text>{" "}
-            19/11/2022
-          </Text>
-
-          <Text as="span">
-            <Text color="gray.500" as="span">
-              How much -
-            </Text>{" "}
-            300kr
-          </Text> */}
+          </UnorderedList> 
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: "column", sm: "row" }}
@@ -110,7 +87,7 @@ export default function CallToActionWithMedia() {
             >
               Sign up
             </Button>
-          </Stack>
+          </Stack> */}
         </Stack>
         <Flex
           flex={1}
