@@ -28,7 +28,7 @@ const Information = () => {
         <Heading as="h2" size="lg" mb={2}>
           When?
         </Heading>
-        <p>Date: 19/11 at ARC.</p>
+        <p>Date: 21/04/2023 at ARC office.</p>
       </Box>
       <Box mb={8}>
         <Heading as="h2" size="lg" mb={2}>

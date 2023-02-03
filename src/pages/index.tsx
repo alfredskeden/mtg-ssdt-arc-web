@@ -85,7 +85,7 @@ const Home = ({ full }: Props) => {
 
   return (
     <Flex direction="column" minHeight="70vh" gap={6} w="full" mb={24}>
-      <NextSeo title="ARC - UMAIN - Super Sealed Tournament 19/11" />
+      <NextSeo title="ARC - UMAIN - Super Sealed Tournament" />
       <Box maxWidth={800} margin="0 auto" w="100%">
         {full && <FullInfo />}
         <span>More information to come</span>
