@@ -5,19 +5,19 @@ import {
   Box,
   Heading,
   Text,
-  Button,
+  // Button,
   Image,
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
 
 export default function CallToActionWithMedia() {
-  const scrollToForm = () => {
-    const form = document.querySelector("#form");
-    if (form) {
-      form.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  // const scrollToForm = () => {
+  //   const form = document.querySelector("#form");
+  //   if (form) {
+  //     form.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   }
+  // };
 
   return (
     <Container maxW="6xl">
@@ -71,7 +71,7 @@ export default function CallToActionWithMedia() {
               300kr
             </ListItem> */}
           </UnorderedList>
-          <Stack
+          {/* <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: "column", sm: "row" }}
           >
@@ -87,7 +87,7 @@ export default function CallToActionWithMedia() {
             >
               Sign up
             </Button>
-          </Stack>
+          </Stack> */}
         </Stack>
         <Flex
           flex={1}
