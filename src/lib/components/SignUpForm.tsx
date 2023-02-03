@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Checkbox, Text, Image } from "@chakra-ui/react";
+import { Box, Button, Heading } from "@chakra-ui/react";
 import type {
   FieldErrorsImpl,
   UseFormRegister,
@@ -19,7 +19,7 @@ type SignUpFormProps = {
     }>
   >;
   isValid: boolean;
-  generateQRcode: () => Promise<void>;
+  // generateQRcode: () => Promise<void>;
   isSubmitting: boolean;
   watch: UseFormWatch<FormValues>;
   QRCode: string | undefined;
@@ -32,7 +32,6 @@ const SignUpForm = ({
   isSubmitting,
   watch,
   QRCode,
-  generateQRcode,
 }: SignUpFormProps) => {
   return (
     <Box maxWidth={800} margin="0 auto" w="100%">
@@ -69,7 +68,7 @@ const SignUpForm = ({
           }}
         />
       </Box>
-      <Button
+      {/* <Button
         mt={8}
         colorScheme="teal"
         size="lg"
@@ -103,17 +102,17 @@ const SignUpForm = ({
             />
           </Box>
         </Box>
-      )}
+      )} */}
       <Box
         display="flex"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="end"
         mt={8}
         flexDirection={{ base: "column", md: "row" }}
       >
-        <Checkbox {...register("accept")}>
+        {/* <Checkbox {...register("accept")}>
           I have paid and I accept the rules for the tournament provided below.
-        </Checkbox>
+        </Checkbox> */}
         <Button
           ml={{ base: "0px", md: "32px" }}
           mt={{ base: "24px", md: "0px" }}

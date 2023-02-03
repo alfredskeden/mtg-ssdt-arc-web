@@ -1,27 +1,26 @@
-// import { Box, Flex, useToast } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 // import axios from "axios";
 import { NextSeo } from "next-seo";
 // import { useState } from "react";
 // import { useForm } from "react-hook-form";
 
 import prisma from "lib/clients/prisma";
-// import FullInfo from "lib/components/FullInfo";
+import FullInfo from "lib/components/FullInfo";
 // import Information from "lib/components/Information";
 // import SignUpForm from "lib/components/SignUpForm";
 // import type { FormValues } from "pages/api/sign-up";
 
-// type Props = {
-//   full: boolean;
-// };
+type Props = {
+  full: boolean;
+};
 
-const Home = () => {
-  // const Home = ({ full }: Props) => {
+const Home = ({ full }: Props) => {
   // const {
   //   handleSubmit,
-  //   register,
+  //   // register,
   //   reset,
-  //   watch,
-  //   formState: { errors, isSubmitting, isValid },
+  //   // watch,
+  //   // formState: { errors, isSubmitting, isValid },
   // } = useForm<FormValues>({ mode: "onBlur" });
   // const toast = useToast();
   // const [QRCode, setQRCode] = useState<string>();
@@ -84,31 +83,31 @@ const Home = () => {
   //   setQRCode(URL.createObjectURL(response.data));
   // };
 
-  return <NextSeo title="ARC - UMAIN - Super Sealed Tournament 19/11" />;
-  //
-  // <Flex direction="column" minHeight="70vh" gap={6} w="full" mb={24}>
-
-  //     <Box maxWidth={800} margin="0 auto" w="100%">
-  //       {full && <FullInfo />}
-  //       <Information />
-  //       {!full && (
-  //         <form onSubmit={onSubmit} id="form">
-  //           <Flex flexDirection="column" gap={6}>
-  //             <SignUpForm
-  //               register={register}
-  //               errors={errors}
-  //               isValid={isValid}
-  //               generateQRcode={generateQRcode}
-  //               watch={watch}
-  //               QRCode={QRCode}
-  //               isSubmitting={isSubmitting}
-  //             />
-  //           </Flex>
-  //         </form>
-  //       )}
-  //       </Box>
-  //   </Flex>
-  //
+  return (
+    <Flex direction="column" minHeight="70vh" gap={6} w="full" mb={24}>
+      <NextSeo title="ARC - UMAIN - Super Sealed Tournament 19/11" />
+      <Box maxWidth={800} margin="0 auto" w="100%">
+        {full && <FullInfo />}
+        <span>More information to come</span>
+        {/* <Information />
+        {!full && (
+          <form onSubmit={onSubmit} id="form">
+            <Flex flexDirection="column" gap={6}>
+              <SignUpForm
+                register={register}
+                errors={errors}
+                isValid={isValid}
+                // generateQRcode={generateQRcode}
+                watch={watch}
+                QRCode={QRCode}
+                isSubmitting={isSubmitting}
+              />
+            </Flex>
+          </form>
+        )} */}
+      </Box>
+    </Flex>
+  );
 };
 
 export async function getServerSideProps() {

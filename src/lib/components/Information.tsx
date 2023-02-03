@@ -172,35 +172,38 @@ const Information = () => {
           General info
         </Heading>
         <Flex gap={1}>
-          <Text>Robin Ellingsen -</Text>
+          <Text>Robin Ellingsen UMAIN -</Text>
           <Link href="tel:+46702000892" passHref>
             <LinkChakra display="flex">070 200 08 92</LinkChakra>
           </Link>
         </Flex>
         <Flex gap={1}>
-          <Text>Alfred Skedebäck - </Text>
+          <Text>Alfred Skedebäck UMAIN - </Text>
           <Link href="tel:+46738104761" passHref>
             <LinkChakra display="flex">073 81 04 761</LinkChakra>
           </Link>
         </Flex>
-        <Flex direction="column" mt={2}>
+        <Flex gap={1}>
+          <Text>Nellie Stenman UMAIN</Text>
+        </Flex>
+        {/* <Flex direction="column" mt={2}>
           <Heading as="h3" size="md">
             Tournament specific info
           </Heading>
           <Text>Dante Cosentino</Text>
-        </Flex>
-        <Flex direction="column" mt={2}>
+        </Flex> */}
+        {/* <Flex direction="column" mt={2}>
           <Heading as="h3" size="md">
             GDPR info
           </Heading>
           <Text>Nellie Stenman</Text>
-        </Flex>
+        </Flex> */}
       </Box>
       <Box mb={8}>
         <Heading as="h2" size="lg">
           Important links
         </Heading>
-        <LinkPDF href="/SealedTournament_Info.pdf" label="Information" />
+        {/* <LinkPDF href="/SealedTournament_Info.pdf" label="Information" /> */}
         <LinkPDF href="/Rules.pdf" label="Rules" />
         <LinkPDF href="/BuildADeck.pdf" label="Build a Deck" />
       </Box>
