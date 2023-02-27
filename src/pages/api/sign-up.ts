@@ -5,7 +5,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "lib/clients/prisma";
 
 export type FormValues = {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
   accept: boolean;
@@ -14,12 +15,12 @@ export type FormValues = {
 const signUp = async (req: NextApiRequest, res: NextApiResponse) => {
   const data = req.body as FormValues;
 
-  const { name, email, phone } = data;
+  const { firstName, lastName, email, phone } = data;
   try {
     if (req.method === "POST") {
       const prismaRes = await prisma.user.create({
         data: {
-          name,
+          name: `${firstName} ${lastName}`,
           email,
           phone,
         },

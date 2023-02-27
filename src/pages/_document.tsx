@@ -15,13 +15,10 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
-            rel="stylesheet"
-          />
           <Meta />
+          <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
         </Head>
-        <body>
+        <body style={{ backgroundColor: "#000" }}>
           <ColorModeScript
             initialColorMode={customTheme.config?.initialColorMode}
           />

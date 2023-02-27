@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { DefaultSeo } from "next-seo";
 
 import defaultSEOConfig from "../../next-seo.config";
 import { Chakra } from "lib/components/Chakra";

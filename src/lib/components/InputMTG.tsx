@@ -1,16 +1,17 @@
-import { FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
+import { Flex, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import type {
   FieldError,
   UseFormRegister,
   ValidationRule,
 } from "react-hook-form";
 
-import type { FormValuesStrings } from "lib/utils";
-import { capitalizeFirstLetter, requiredText } from "lib/utils";
+import type { FormValuesStrings, FormValuesTypes } from "lib/utils";
+import { requiredText } from "lib/utils";
 import type { FormValues } from "pages/api/sign-up";
 
 type InputMTGProps = {
   label: FormValuesStrings;
+  inputType: FormValuesTypes;
   register: UseFormRegister<FormValues>;
   error: FieldError | undefined;
   errorMessage: string | undefined;
@@ -20,6 +21,7 @@ type InputMTGProps = {
 
 const InputMTG = ({
   label,
+  inputType,
   register,
   error,
   errorMessage,
@@ -27,20 +29,31 @@ const InputMTG = ({
   pattern,
 }: InputMTGProps) => {
   return (
-    <FormControl isRequired={isRequired}>
-      <FormLabel htmlFor={label}>{capitalizeFirstLetter(label)}</FormLabel>
-      <Input
-        size="lg"
-        id={label}
-        type={label}
-        borderColor="white"
-        placeholder={label}
-        {...register(label, {
-          required: isRequired ? requiredText : undefined,
-          pattern,
-        })}
-      />
-      <Text color="red.400">{error && errorMessage}</Text>
+    <FormControl>
+      <Flex flexDir="column">
+        <FormLabel htmlFor={label} fontSize="1.6rem" fontWeight={700}>
+          {label}
+        </FormLabel>
+        <Input
+          height="4.8rem"
+          id={label}
+          type={label}
+          background="white"
+          border="0"
+          borderRadius="0"
+          color="black"
+          fontSize="1.6rem"
+          fontWeight={700}
+          placeholder={label}
+          {...register(inputType, {
+            required: isRequired ? requiredText : undefined,
+            pattern,
+          })}
+        />
+        <Text color="red.400" fontSize="1.2rem" fontWeight={700}>
+          {error && errorMessage}
+        </Text>
+      </Flex>
     </FormControl>
   );
 };
