@@ -1,4 +1,4 @@
-import { Flex, useMediaQuery } from "@chakra-ui/react";
+import { Flex, useMediaQuery, Text } from "@chakra-ui/react";
 import { SkipNavContent } from "@chakra-ui/skip-nav";
 import type { ReactNode } from "react";
 
@@ -11,6 +11,19 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   const [Desktop] = useMediaQuery("(min-width: 920px)");
+
+  return (
+    <Flex
+      flexDirection="column"
+      sx={{
+        p: "4rem",
+      }}
+    >
+      <Text fontSize="6xl">Page is updating. Please wait.</Text>
+      <Text fontSize="6xl">Best Regards MTG Club</Text>
+      <Footer />
+    </Flex>
+  );
 
   return (
     <Flex

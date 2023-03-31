@@ -5,6 +5,13 @@ import SignUpForm from "lib/components/SignUpForm";
 
 const Home = () => {
   const [Desktop] = useMediaQuery("(min-width: 920px)");
+
+  return (
+    <Flex>
+      <NextSeo title="UMAIN Mtg Club - Qualifiers" />
+    </Flex>
+  );
+
   return (
     <Flex
       direction="column"
