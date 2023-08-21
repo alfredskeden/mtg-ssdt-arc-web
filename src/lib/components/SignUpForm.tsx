@@ -1,20 +1,21 @@
 import {
-  Button,
+  // Button,
   useToast,
   Text,
   Flex,
   Checkbox,
   Box,
-  useClipboard,
+  // useClipboard,
   useMediaQuery,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FiCopy } from "react-icons/fi";
+// import { FiCopy } from "react-icons/fi";
 
 import InputMTG from "lib/components/InputMTG";
+import { emailRegex, phoneRegex } from "lib/utils/regex";
 import type { FormValues } from "pages/api/sign-up";
 
 const SignUpForm = () => {
@@ -28,7 +29,8 @@ const SignUpForm = () => {
   const [Desktop] = useMediaQuery("(min-width: 920px)");
   const [signed, setSigned] = useState(false);
   const toast = useToast();
-  const { onCopy, setValue, hasCopied } = useClipboard("");
+  // const { onCopy, setValue, hasCopied } = useClipboard("");
+  const disabledForm = !watch("accept") || !isValid || signed;
 
   const onSubmit = handleSubmit(async (formData) => {
     const response = await axios.post("/api/sign-up", formData);
@@ -71,14 +73,15 @@ const SignUpForm = () => {
     <form onSubmit={onSubmit} id="form">
       <Flex
         flexDir={Desktop ? "row" : "column"}
-        gap="3.2rem"
+        gap="4.8rem"
         px="1.6rem"
         mt="2.4rem"
         background="rgba(0, 0, 0, 0.2)"
         border="1px solid rgba(0, 0, 0, 0.1)"
         backdropFilter="blur(10px)"
+        maxWidth={420}
       >
-        <Flex flexDir="column" maxWidth={Desktop ? "50%" : "full"}>
+        <Flex flexDir="column" maxWidth={Desktop ? "100%" : "full"}>
           <Text
             as="h2"
             fontSize="2.4rem"
@@ -121,9 +124,7 @@ const SignUpForm = () => {
               error={errors.email}
               errorMessage={errors.email?.message}
               pattern={{
-                value:
-                  // eslint-disable-next-line no-useless-escape
-                  /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-z]+)$/,
+                value: emailRegex,
                 message: "Please enter a valid email.",
               }}
             />
@@ -134,7 +135,7 @@ const SignUpForm = () => {
               error={errors.phone}
               errorMessage={errors.phone?.message}
               pattern={{
-                value: /^(([+]46)\s*(7)|07)[02369]\s*(\d{4})\s*(\d{3})$/,
+                value: phoneRegex,
                 message: "Please provide a valid Swedish phone number.",
               }}
             />
@@ -149,14 +150,14 @@ const SignUpForm = () => {
                 />
               </Box>
               <Flex flexDir="column" gap="1.2rem" lineHeight="1.4rem">
-                <Text fontSize="1.2rem" color="#FF0000" fontWeight={500}>
+                {/** <Text fontSize="1.2rem" color="#FF0000" fontWeight={500}>
                   I understand that if I do not make a swish payment with the
                   right amount the same day as upon registration I will lose my
                   place in the competition.
-                </Text>
+            </Text> */}
                 <Text fontSize="1.2rem" fontWeight={500}>
                   I do also understand that my contact information will be saved
-                  and used by Umain Mtg Club if needed
+                  and used by ARC MTG Club if needed.
                 </Text>
               </Flex>
             </Flex>
@@ -164,20 +165,22 @@ const SignUpForm = () => {
           <Box
             as="button"
             type="submit"
-            disabled={!watch("accept") || !isValid || signed}
+            disabled={disabledForm}
             alignSelf="center"
             fontWeight={900}
             fontSize="3.2rem"
             textTransform="uppercase"
             p="1.6rem"
+            mb="3.2rem"
             w="100%"
-            border={signed ? "1px solid grey" : "1px solid red"}
-            background={signed ? "" : "rgba(255, 0, 0, 0.7)"}
+            border={disabledForm ? "1px solid grey" : "1px solid red"}
+            background={disabledForm ? "" : "rgba(255, 0, 0, 0.7)"}
           >
             {signed ? "Registered" : "Sign up"}
           </Box>
         </Flex>
-        <Flex flexDir="column" mt={Desktop ? "auto" : "2.4rem"} gap="2.4rem">
+        {/** Swish payment info */}
+        {/** <Flex flexDir="column" mt={Desktop ? "auto" : "2.4rem"} gap="2.4rem">
           <Text
             textAlign="center"
             fontSize="1.6rem"
@@ -238,8 +241,8 @@ const SignUpForm = () => {
                 />
               )}
             </Flex>
-          </Flex>
-        </Flex>
+          </Flex> 
+              </Flex> */}
       </Flex>
     </form>
   );

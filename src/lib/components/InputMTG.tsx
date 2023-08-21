@@ -50,7 +50,13 @@ const InputMTG = ({
             pattern,
           })}
         />
-        <Text color="red.400" fontSize="1.2rem" fontWeight={700}>
+        <Text
+          color="red.400"
+          fontSize="1.2rem"
+          fontWeight={700}
+          minHeight="1.8rem"
+          mt="0.3rem"
+        >
           {error && errorMessage}
         </Text>
       </Flex>

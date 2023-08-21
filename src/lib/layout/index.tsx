@@ -1,4 +1,4 @@
-import { Flex, useMediaQuery, Text } from "@chakra-ui/react";
+import { Flex, useMediaQuery } from "@chakra-ui/react";
 import { SkipNavContent } from "@chakra-ui/skip-nav";
 import type { ReactNode } from "react";
 
@@ -10,32 +10,37 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const [Desktop] = useMediaQuery("(min-width: 920px)");
+  const [desktop] = useMediaQuery("(min-width: 920px)");
+
+  // return (
+  //   <Flex
+  //     flexDirection="column"
+  //     sx={{
+  //       p: "4rem",
+  //     }}
+  //   >
+  //     <Text fontSize="6xl">Page is updating. Please wait.</Text>
+  //     <Text fontSize="6xl">Best Regards MTG Club</Text>
+  //     <Footer />
+  //   </Flex>
+  // );
 
   return (
     <Flex
       flexDirection="column"
-      sx={{
-        p: "4rem",
-      }}
-    >
-      <Text fontSize="6xl">Page is updating. Please wait.</Text>
-      <Text fontSize="6xl">Best Regards MTG Club</Text>
-      <Footer />
-    </Flex>
-  );
-
-  return (
-    <Flex
-      flexDirection="column"
-      maxWidth={1280}
       // backgroundImage="linear-gradient(169.49deg, rgba(0, 0, 0, 0) 8%, #000000 19%), url('/background_full.png')"
       // backgroundPosition="top"
       // backgroundRepeat="no-repeat"
     >
-      <Flex flexDirection={Desktop ? "row" : "column"}>
+      <Flex
+        flexDirection={desktop ? "row" : "column"}
+        justifyContent="center"
+        gap="3.6rem"
+      >
         <Header />
-        <SkipNavContent as="main">{children}</SkipNavContent>
+        <SkipNavContent as="main" maxW={420} mx={desktop ? "" : "auto"}>
+          {children}
+        </SkipNavContent>
       </Flex>
       <Footer />
     </Flex>
