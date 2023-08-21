@@ -1,4 +1,4 @@
-const APP_NAME = "Magic super draft by ARC MTG Club";
+const APP_NAME = "Wilds of Eldraine draft by ARC MTG Club";
 
 const Meta = () => {
   return (

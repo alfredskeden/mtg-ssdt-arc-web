@@ -13,13 +13,18 @@ export default function CallToActionWithMedia() {
     >
       <Link href="/" passHref>
         <Image
-          src="/header_image.png"
-          alt="Company clash championship qualifiers image"
-          width="370"
-          height="300"
+          src="/MTGWOE_EN_Bstr_Drft_01_02.png"
+          alt="Wilds of Eldraine booster"
+          width="225"
+          height="403"
+          priority
+          style={{
+            transform:
+              "perspective(400px) rotate3d(1, -1, 0, calc(var(--i, 1) * 8deg))",
+          }}
         />
       </Link>
-      <Box display="flex" flexDir="column" gap={4} textAlign="center" mt="-4">
+      <Box display="flex" flexDir="column" gap={4} textAlign="center" mt="4">
         <Text
           as="h1"
           fontWeight={700}
