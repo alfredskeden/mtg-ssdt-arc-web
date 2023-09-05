@@ -24,8 +24,8 @@ const Header = () => {
           tournament. Channel, your mana, summon your creatures and cast your
           spells to seize victory and win prizes.
         </Text>
-        <Text fontSize="1.6rem" fontWeight={600} lineHeight="2rem">
-          Date: xx/XX - time: xx/XX
+        <Text fontSize="2rem" fontWeight={600} lineHeight="2rem">
+          Date: 7 October - Time: 12:00
         </Text>
       </Flex>
     </Flex>
