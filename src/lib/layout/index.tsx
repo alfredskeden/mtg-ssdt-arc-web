@@ -2,6 +2,8 @@ import { Flex, useMediaQuery } from "@chakra-ui/react";
 import { SkipNavContent } from "@chakra-ui/skip-nav";
 import type { ReactNode } from "react";
 
+import SwishPayment from "lib/components/SwishPayment";
+
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -42,6 +44,7 @@ const Layout = ({ children }: LayoutProps) => {
           {children}
         </SkipNavContent>
       </Flex>
+      <SwishPayment />
       <Footer />
     </Flex>
   );

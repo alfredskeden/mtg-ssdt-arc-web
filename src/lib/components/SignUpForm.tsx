@@ -1,18 +1,15 @@
 import {
-  // Button,
   useToast,
   Text,
   Flex,
   Checkbox,
   Box,
-  // useClipboard,
   useMediaQuery,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-// import { FiCopy } from "react-icons/fi";
 
 import InputMTG from "lib/components/InputMTG";
 import { emailRegex, phoneRegex } from "lib/utils/regex";
@@ -29,7 +26,6 @@ const SignUpForm = () => {
   const [Desktop] = useMediaQuery("(min-width: 920px)");
   const [signed, setSigned] = useState(false);
   const toast = useToast();
-  // const { onCopy, setValue, hasCopied } = useClipboard("");
   const disabledForm = !watch("accept") || !isValid || signed;
 
   const onSubmit = handleSubmit(async (formData) => {
@@ -150,11 +146,11 @@ const SignUpForm = () => {
                 />
               </Box>
               <Flex flexDir="column" gap="1.2rem" lineHeight="1.4rem">
-                {/** <Text fontSize="1.2rem" color="#FF0000" fontWeight={500}>
+                <Text fontSize="1.2rem" color="#FF0000" fontWeight={500}>
                   I understand that if I do not make a swish payment with the
                   right amount the same day as upon registration I will lose my
-                  place in the competition.
-            </Text> */}
+                  place in the draft.
+                </Text>
                 <Text fontSize="1.2rem" fontWeight={500}>
                   I do also understand that my contact information will be saved
                   and used by ARC MTG Club if needed.
@@ -179,70 +175,6 @@ const SignUpForm = () => {
             {signed ? "Registered" : "Sign up"}
           </Box>
         </Flex>
-        {/** Swish payment info */}
-        {/** <Flex flexDir="column" mt={Desktop ? "auto" : "2.4rem"} gap="2.4rem">
-          <Text
-            textAlign="center"
-            fontSize="1.6rem"
-            fontWeight={700}
-            textTransform="uppercase"
-          >
-            Do not forget to make the payment ↓
-          </Text>
-          <Flex
-            flexDirection="column"
-            alignItems="center"
-            background="rgba(0, 0, 0, 0.2)"
-            border="1px solid rgba(255, 255, 255, 0.1);"
-            backdropFilter="blur(10px)"
-            py="3.2rem"
-          >
-            <Flex
-              flexDirection="column"
-              alignItems="center"
-              textAlign="center"
-              gap="1.6rem"
-              fontSize="1.6rem"
-              fontWeight={700}
-              lineHeight="1.9rem"
-            >
-              <Image
-                src="/swishlogo.png"
-                alt="The swish logo"
-                width="79"
-                height="24"
-              />
-
-              <Text>Pay with swish.</Text>
-              <Flex flexDirection="column">
-                <Text>Alfred Skedebäck</Text>
-                <Text>130:-</Text>
-              </Flex>
-              <Button
-                height="5.6rem"
-                fontSize="1.6rem"
-                gap="1.6rem"
-                rounded="lg"
-                px="1.6rem"
-                onClick={() => {
-                  onCopy();
-                  setValue("+46738104761");
-                }}
-              >
-                <Text>+46738104761</Text>{" "}
-                <FiCopy color={hasCopied ? "green" : ""} />
-              </Button>
-              {Desktop && (
-                <Image
-                  src="/qr_swish_screenshot.png"
-                  alt="QR Swishkod för betalning"
-                  width="240"
-                  height="286"
-                />
-              )}
-            </Flex>
-          </Flex> 
-              </Flex> */}
       </Flex>
     </form>
   );
