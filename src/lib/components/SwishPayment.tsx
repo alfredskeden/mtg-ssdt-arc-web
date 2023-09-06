@@ -13,7 +13,7 @@ const SwishPayment = () => {
   const { onCopy, setValue, hasCopied } = useClipboard("");
 
   return (
-    <Flex flexDir="column" mt="2.4rem" gap="2.4rem">
+    <Flex flexDir="column" mt="2.4rem" gap="2.4rem" id="swish-payment">
       <Text
         textAlign="center"
         fontSize="1.6rem"

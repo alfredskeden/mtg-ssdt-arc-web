@@ -9,7 +9,7 @@ const Header = () => {
     <Flex as="header" align="center" flexDir="column" gap="3.6rem" my="auto">
       <SkipNavLink>Skip to content</SkipNavLink>
       <CallToActionWithMedia />
-      <Flex flexDir="column" gap="1.2rem" maxW="42rem" textAlign="center">
+      <Flex flexDir="column" gap="1.8rem" maxW="42rem" textAlign="center">
         <Text
           as="h2"
           textTransform="uppercase"
@@ -26,6 +26,9 @@ const Header = () => {
         </Text>
         <Text fontSize="2rem" fontWeight={600} lineHeight="2rem">
           Date: 7 October - Time: 12:00
+        </Text>
+        <Text fontSize="2rem" fontWeight={600} lineHeight="2rem">
+          Adress: Mäster samuelsgatan 56
         </Text>
       </Flex>
     </Flex>
