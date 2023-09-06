@@ -28,7 +28,6 @@ const SwishPayment = () => {
         background="rgba(0, 0, 0, 0.2)"
         border="1px solid rgba(255, 255, 255, 0.1);"
         backdropFilter="blur(10px)"
-        py="3.2rem"
       >
         <Flex
           flexDirection="column"
@@ -39,14 +38,19 @@ const SwishPayment = () => {
           fontWeight={700}
           lineHeight="1.9rem"
         >
-          <Image
+          {/** <Image 
             src="/swishlogo.png"
             alt="The swish logo"
             width="79"
             height="24"
+          /> */}
+          <Image
+            src="/swishlogo_white.png"
+            alt="swish logo black and white"
+            height={114}
+            w={84}
           />
-
-          <Text>Pay with swish.</Text>
+          <Text mt="2.4rem">Pay with swish.</Text>
           <Flex flexDirection="column">
             <Text>Alfred Skedebäck</Text>
             <Text>150:-</Text>
