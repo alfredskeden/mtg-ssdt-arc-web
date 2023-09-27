@@ -24,8 +24,16 @@ const Header = () => {
           tournament. Channel, your mana, summon your creatures and cast your
           spells to seize victory and win prizes.
         </Text>
+        <Text
+          fontSize="2rem"
+          fontWeight={600}
+          lineHeight="2rem"
+          textDecoration="underline"
+        >
+          NEW DATE
+        </Text>
         <Text fontSize="2rem" fontWeight={600} lineHeight="2rem">
-          Date: 7 October - Time: 12:00
+          Date: 14 October - Time: 12:00
         </Text>
         <Text fontSize="2rem" fontWeight={600} lineHeight="2rem">
           Adress: Mäster samuelsgatan 56
