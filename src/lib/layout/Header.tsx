@@ -33,7 +33,7 @@ const Header = () => {
           NEW DATE
         </Text>
         <Text fontSize="2rem" fontWeight={600} lineHeight="2rem">
-          Date: 14 October - Time: 12:00
+          Date: 14 October - Doors open time: 11:30-12:00
         </Text>
         <Text fontSize="2rem" fontWeight={600} lineHeight="2rem">
           Adress: Mäster samuelsgatan 56
