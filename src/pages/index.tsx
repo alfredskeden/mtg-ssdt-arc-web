@@ -1,7 +1,7 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 
-import SignUpForm from "lib/components/SignUpForm";
+// import SignUpForm from "lib/components/SignUpForm";
 
 const Home = () => {
   // return (
@@ -18,7 +18,7 @@ const Home = () => {
       // backgroundPosition="top"
       // backgroundRepeat="no-repeat"
     >
-      <NextSeo title="ARC MTG Club - Wilds of Eldraine draft" />
+      <NextSeo title="UMAIN MTG Club" />
       <Flex
         display="flex"
         flexDir="column"
@@ -27,7 +27,10 @@ const Home = () => {
         my="auto"
         gap="1.2rem"
       >
-        <SignUpForm />
+        <Text as="h1" fontSize="4rem" fontWeight={600} lineHeight="2rem">
+          Under construction
+        </Text>
+        {/* <SignUpForm /> */}
       </Flex>
     </Flex>
   );

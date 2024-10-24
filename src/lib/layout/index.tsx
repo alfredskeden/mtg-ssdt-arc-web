@@ -2,10 +2,10 @@ import { Flex, useMediaQuery } from "@chakra-ui/react";
 import { SkipNavContent } from "@chakra-ui/skip-nav";
 import type { ReactNode } from "react";
 
-import SwishPayment from "lib/components/SwishPayment";
+// import SwishPayment from "lib/components/SwishPayment";
 
 import Footer from "./Footer";
-import Header from "./Header";
+// import Header from "./Header";
 
 type LayoutProps = {
   children: ReactNode;
@@ -39,12 +39,12 @@ const Layout = ({ children }: LayoutProps) => {
         justifyContent="center"
         gap="3.6rem"
       >
-        <Header />
+        {/* <Header /> */}
         <SkipNavContent as="main" maxW={420} mx={desktop ? "" : "auto"}>
           {children}
         </SkipNavContent>
       </Flex>
-      <SwishPayment />
+      {/* <SwishPayment /> */}
       <Footer />
     </Flex>
   );
